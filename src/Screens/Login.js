@@ -2,7 +2,8 @@ import { StyleSheet, View, Image, Text, TextInput, Pressable } from "react-nativ
 import React, { useState, useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
-import { Box, Button, Center } from 'native-base'
+import { Box, Button, Center } from 'native-base';
+import Swal from 'sweetalert2';
 
 import api from '../API';
 import { Context } from '../Context/authContext';
@@ -36,7 +37,22 @@ const Login = ({ navigation }) => {
     }
 
     const desenvolvimento = () => {
-        alert('Em desenvolvimento...')
+        const toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        toast.fire({
+            icon: 'info',
+            title: `Em Desenvolvimento...`
+        })
     }
 
     return (
