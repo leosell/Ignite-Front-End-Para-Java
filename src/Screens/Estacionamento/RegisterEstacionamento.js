@@ -24,7 +24,7 @@ const RegisterEstacionamento = ({ navigation }) => {
 
     const onRegisterPressed = async () => {
         try {
-            const authData = await api.post(`/estacionamento/register`, {
+            const authData = await api.post(`/estacionamento`, {
                 idUsuario: state.idUser,
                 nome: nome,
                 cnpj: cnpj,
