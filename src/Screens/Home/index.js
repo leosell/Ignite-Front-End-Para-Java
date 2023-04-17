@@ -35,7 +35,7 @@ const Home = ({ navigation }) => {
     Swal.fire({
       title: 'Perfil',
       html:
-        '<input id="swal-input1">' +
+        '<input id="swal-input1"}>' +
         '<input id="swal-input2">',
       showConfirmButton: true,
       showCancelButton: true
@@ -44,7 +44,7 @@ const Home = ({ navigation }) => {
 
   const screenLoad = async () => {
     const id = state.idUser
-    const list = await api.get('/carteira/busca/' + id)
+    const list = await api.get('/wallet' + id)
     setCarteira(list.data.saldo)
 }
 
