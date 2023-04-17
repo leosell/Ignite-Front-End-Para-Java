@@ -10,7 +10,6 @@ let initialState = {
     idEstacionamento: '',
     nameEstacionamento: '',
     update: false,
-    valor: 0
 }
 
 const reducer = (state, action) => {
@@ -18,7 +17,7 @@ const reducer = (state, action) => {
         case "logIn":
             return { ...state, isLogged: action.payload, Loading: false }
         case "logOut":
-            AsyncStorage.removeItem("token");
+            AsyncStorage.removeItem("Authorization");
             return { 
                 ...state, 
                 isLogged: false,
@@ -45,11 +44,6 @@ const reducer = (state, action) => {
                 ...state,
                 update: action.payload,
                 Loading: false
-            }
-        case "saldo":
-            return {
-                ...state,
-                valor: action.payload.saldo
             }
         default:
             return state
