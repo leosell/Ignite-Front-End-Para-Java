@@ -20,6 +20,9 @@ const App = () => {
         <NativeBaseProvider>
             <NavigationContainer>
                 <Stack.Navigator screenOptions={{ headerShown: false }}>
+                    {/* <Stack.Screen name="Routes" component={Routes} />
+                    <Stack.Screen name="Login" component={Login} />
+                    <Stack.Screen name="RegisterUser" component={RegisterUser} /> */}
                     {state.Loading ? (
                         <Stack.Screen name="ValidateToken" component={ValidateToken} />
                     ) : (
