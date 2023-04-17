@@ -23,7 +23,7 @@ const Estacionamentos = ({ navigation }) => {
   const [horario, setHorario] = useState('')
 
   const screenLoad = async () => {
-    const list = await api.get('/estacionamento/busca')
+    const list = await api.get('/estacionamento')
     setEstacionamento(list.data.estacionamento)
   }
 
@@ -38,7 +38,7 @@ const Estacionamentos = ({ navigation }) => {
 
   const atualizarEstacionamento = async (id) => {
     try {
-      const authData = await api.patch(`/update/${id}`, {
+      const authData = await api.patch(`/estacionamento/${id}`, {
         idUsuario: id,
         nome: 'teste',
         cnpj: '321',
