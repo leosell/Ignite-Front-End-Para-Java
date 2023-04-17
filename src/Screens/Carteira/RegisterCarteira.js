@@ -17,7 +17,7 @@ const RegisterCarteira = ({ navigation }) => {
 
     const onRegisterPressed = async () => {
         try {
-            const authData = await api.post('/carteira/register', {
+            const authData = await api.post('/wallet', {
                 saldoTotal: saldoTotal,
                 idUsuario: state.idUser
             })
@@ -70,7 +70,7 @@ const RegisterCarteira = ({ navigation }) => {
 
     const screenLoad = async () => {
         const id = state.idUser
-        const list = await api.get('/carteira/busca/' + id)
+        const list = await api.get('/wallet' + id)
         setCarteira(list.data.saldo)
     }
 
