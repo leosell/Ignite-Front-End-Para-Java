@@ -3,19 +3,18 @@ import React, { useContext } from 'react';
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 
 import { Context } from '../Context/authContext';
-
 import api from '../API';
 
 const ValidateToken = ({ navigation }) => {
     const { state, dispatch } = useContext(Context);
     setTimeout(() => {
         const validateToken = async () => {
-            const token = await AsyncStorage.getItem("token");
-            if (token) {
+            const authorization = await AsyncStorage.getItem("Authorization");
+            if (authorization) {
                 try {
-                    const data = await api.get('/cliente', {
+                    const data = await api.get('/login', {
                         headers: {
-                            token: token
+                            authorization: authorization
                         }
                     });
                     await dispatch({ type: 'verify', payload: data.data.authData })
