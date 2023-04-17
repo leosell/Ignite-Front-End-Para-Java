@@ -12,17 +12,17 @@ import Logo from "../../assets/images/Logo.png";
 
 const Login = ({ navigation }) => {
     const { dispatch } = useContext(Context);
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const onLoginPressed = async () => {
         try {
             const authData = await api.post('/login', {
-                email: email,
+                username: username,
                 password: password
             })
             if(authData.status === 200){
-                await AsyncStorage.setItem('token', authData.data.token)
+                await AsyncStorage.setItem('Authorization', authData.data.token)
                 dispatch({type:'logIn', payload: true})
             } else {
                 alert('Email/Senha Inválidos assa')
@@ -71,8 +71,8 @@ const Login = ({ navigation }) => {
                     <Box style={styles.inputsSeparado}>
                         <TextInput
                             placeholder='Email'
-                            value={email}
-                            onChangeText={setEmail}
+                            value={username}
+                            onChangeText={setUsername}
                             style={styles.caixaInputs}
                         />
                     </Box>
