@@ -7,9 +7,9 @@ import { Box, Center, Checkbox, Button } from 'native-base'
 import Swal from "sweetalert2";
 
 const RegisterUser = ({ navigation }) => {
-    const [nome, setName] = useState("");
+    const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [senha, setSenha] = useState("");
     const [cpf, setCpf] = useState("");
 
 
@@ -20,7 +20,7 @@ const RegisterUser = ({ navigation }) => {
                 nome: nome,
                 email: email,
                 cpf: cpf,
-                password: password,
+                senha: senha,
                 admin: false
             });
             if (data.status === 201) {
@@ -88,8 +88,8 @@ const RegisterUser = ({ navigation }) => {
                     <TextInput
                         placeholder='Nome'
                         value={nome}
-                        setValue={setName}
-                        onChangeText={setName}
+                        setValue={setNome}
+                        onChangeText={setNome}
                         style={styles.caixaInputs}
                     />
 
@@ -111,8 +111,8 @@ const RegisterUser = ({ navigation }) => {
 
                     <TextInput
                         placeholder='Senha'
-                        value={password}
-                        setValue={setEmail}
+                        value={senha}
+                        setValue={setSenha}
                         secureTextEntry={true}
                         onChangeText={setPassword}
                         style={styles.caixaInputs}

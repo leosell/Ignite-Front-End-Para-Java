@@ -11,7 +11,6 @@ import ValidateToken from "./src/Screens/ValidateToken";
 import RegisterUser from "./src/Screens/RegisterUser";
 import Routes from "./src/Screens/Routes"
 
-
 const Stack = createNativeStackNavigator()
 
 const App = () => {

@@ -7,19 +7,18 @@ import Swal from 'sweetalert2';
 
 import api from '../API';
 import { Context } from '../Context/authContext';
-
 import Logo from "../../assets/images/Logo.png";
 
 const Login = ({ navigation }) => {
     const { dispatch } = useContext(Context);
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
 
     const onLoginPressed = async () => {
         try {
             const authData = await api.post('/login', {
-                username: username,
-                password: password
+                email: email,
+                senha: senha
             })
             if(authData.status === 200){
                 await AsyncStorage.setItem('Authorization', authData.data.token)
@@ -27,12 +26,12 @@ const Login = ({ navigation }) => {
             } else {
                 alert('Email/Senha Inválidos assa')
                 setEmail('')
-                setPassword('')
+                setSenha('')
             }
         } catch (error) {
             alert('Email/Senha Inválidos')
             setEmail('')
-            setPassword('')
+            setSenha('')
         }
     }
 
@@ -71,8 +70,8 @@ const Login = ({ navigation }) => {
                     <Box style={styles.inputsSeparado}>
                         <TextInput
                             placeholder='Email'
-                            value={username}
-                            onChangeText={setUsername}
+                            value={email}
+                            onChangeText={setEmail}
                             style={styles.caixaInputs}
                         />
                     </Box>
@@ -80,9 +79,9 @@ const Login = ({ navigation }) => {
                     <Box style={styles.inputsSeparado}>
                         <TextInput
                             placeholder='Senha'
-                            value={password}
+                            value={senha}
                             secureTextEntry={true}
-                            onChangeText={setPassword}
+                            onChangeText={setSenha}
                             style={styles.caixaInputs}
                         />
                     </Box>
